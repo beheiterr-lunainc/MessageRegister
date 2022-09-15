@@ -9,6 +9,8 @@
 // - Include Q_CLASSINFO("command", xxx) on the line after Q_OBJECT, where xxx is replaced by a string.
 //     This is used by MessageDispatcher to figure out what command word
 //     is associated with each subclass.
+// - Have a default constructor tagged with Q_INVOKABLE.
+//     This is required in order for QMetaObject::newInstance() to create an object instance dynamically.
 // - Provide implementation for the handle() method.
 // - Include the REGISTER_HANDLER(T) macro after the subclass declaration
 //     This is used by the global methods in the MessageRegister namespace in order

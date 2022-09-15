@@ -15,12 +15,12 @@ public:
 
     void handle(const Message &m)
     {
-        Q_UNUSED(m);
-
-        int num = 0;
-        if (!m.args.isEmpty()) {
-            num = m.args[0].toInt();
+        if (m.args.isEmpty()) {
+            qInfo() << "How high?";
+            return;
         }
+
+        int num = m.args[0].toInt();
 
         for (int i = 1; i <= num; i++) {
             qInfo() << i;

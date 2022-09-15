@@ -25,15 +25,17 @@ int main(int argc, char *argv[])
     MessageDispatcher dispatcher;
     QTextStream in(stdin);
 
-    qInfo() << "Waiting for command!";
+    qInfo() << "Waiting for command!" << Qt::endl;
 
     bool run = true;
     while (run) {
-        qInfo() << "";
         QString line = in.readLine();
-        Message msg = parseText(line);
 
-        dispatcher.handleMessage(msg);
+        if (!line.trimmed().isEmpty()) {
+            Message msg = parseText(line);
+            dispatcher.handleMessage(msg);
+            qInfo() << "";
+        }
     }
 
     return a.exec();

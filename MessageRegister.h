@@ -4,6 +4,8 @@
 #include <QList>
 #include <QMetaType>
 
+#define REGISTER_HANDLER(CLASS)  static MessageRegister::Registration<CLASS> _CLASS_registration;
+
 namespace MessageRegister
 {
     void registerType(QString typeName);
@@ -17,8 +19,6 @@ namespace MessageRegister
             registerType(QMetaType::fromType<T*>().name());
         }
     };
-
-#define REGISTER_HANDLER(CLASS)  static MessageRegister::Registration<CLASS> _CLASS_registration;
 }
 
 #endif // MESSAGEHANDLERREGISTRATION_H
